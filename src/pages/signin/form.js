@@ -3,7 +3,7 @@ import TextInputWithLabel from '../../components/TextInputWithLabel';
 import EButton from '../../components/Button';
 import { Form } from 'react-bootstrap';
 
-export default function form({form, handleChange, handleSubmit, isLoading}) {
+export default function Eform({form, handleChange, handleSubmit, isLoading}) {
     return (
     <Form>
         <TextInputWithLabel
