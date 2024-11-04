@@ -8,64 +8,64 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotif } from '../../redux/notif/actions';
 import {
-    fetchListCategories,
-    fetchListTalents,
+  fetchListCategories,
+  fetchListTalents,
 } from '../../redux/lists/actions';
 
 function EventsCreate() {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const lists = useSelector((state) => state.lists);
-    const [form, setForm] = useState({
-        title: '',
-        price: '',
-        date: '',
-        file: '',
-        avatar: '',
-        about: '',
-        venueName: '',
-        tagline: '',
-        keyPoint: [''],
-        tickets: [
-    {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const lists = useSelector((state) => state.lists);
+  const [form, setForm] = useState({
+    title: '',
+    price: '',
+    date: '',
+    file: '',
+    avatar: '',
+    about: '',
+    venueName: '',
+    tagline: '',
+    keyPoint: [''],
+    tickets: [
+      {
         type: '',
         status: '',
         stock: '',
         price: '',
-    },
+      },
     ],
-        category: '',
-        talent: '',
-        stock: '',
-    });
+    category: '',
+    talent: '',
+    stock: '',
+  });
 
-const [alert, setAlert] = useState({
+  const [alert, setAlert] = useState({
     status: false,
     type: '',
     message: '',
-});
+  });
 
-const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
     dispatch(fetchListTalents());
     dispatch(fetchListCategories());
-}, [dispatch]);
+  }, [dispatch]);
 
-const uploadImage = async (file) => {
+  const uploadImage = async (file) => {
     let formData = new FormData();
     formData.append('avatar', file);
     const res = await postData('/cms/images', formData, true);
     return res;
-};
+  };
 
-const handleChange = async (e) => {
+  const handleChange = async (e) => {
     if (e.target.name === 'avatar') {
-        if (
-            e?.target?.files[0]?.type === 'image/jpg' ||
-            e?.target?.files[0]?.type === 'image/png' ||
-            e?.target?.files[0]?.type === 'image/jpeg'
-        ) {
+      if (
+        e?.target?.files[0]?.type === 'image/jpg' ||
+        e?.target?.files[0]?.type === 'image/png' ||
+        e?.target?.files[0]?.type === 'image/jpeg'
+      ) {
         var size = parseFloat(e.target.files[0].size / 3145728).toFixed(2);
 
         if (size > 2) {
@@ -115,18 +115,18 @@ const handleChange = async (e) => {
     setIsLoading(true);
 
     const payload = {
-        date: form.date,
-        image: form.file,
-        title: form.title,
-        price: form.price,
-        about: form.about,
-        venueName: form.venueName,
-        tagline: form.tagline,
-        keyPoint: form.keyPoint,
-        category: form.category.value,
-        talent: form.talent.value,
-        status: form.status,
-        tickets: form.tickets,
+      date: form.date,
+      image: form.file,
+      title: form.title,
+      price: form.price,
+      about: form.about,
+      venueName: form.venueName,
+      tagline: form.tagline,
+      keyPoint: form.keyPoint,
+      category: form.category.value,
+      talent: form.talent.value,
+      status: form.status,
+      tickets: form.tickets,
     };
 
     const res = await postData('/cms/events', payload);

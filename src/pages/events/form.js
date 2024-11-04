@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-    CloseButton,
-    Col,
-    Figure,
-    Form,
-    FormControl,
-    InputGroup,
-    Row,
+  CloseButton,
+  Col,
+  Figure,
+  Form,
+  FormControl,
+  InputGroup,
+  Row,
 } from 'react-bootstrap';
 import Button from '../../components/Button';
 import TextInputWithLabel from '../../components/TextInputWithLabel';
@@ -14,18 +14,18 @@ import SelectBox from '../../components/SelectBox';
 import { config } from '../../configs';
 
 export default function EventsForm({
-    handleSubmit,
-    form,
-    handleChange,
-    isLoading,
-    edit,
-    lists,
-    handlePlusKeyPoint,
-    handleChangeKeyPoint,
-    handleMinusKeyPoint,
-    handlePlusTicket,
-    handleMinusTicket,
-    handleChangeTicket,
+  handleSubmit,
+  form,
+  handleChange,
+  isLoading,
+  edit,
+  lists,
+  handlePlusKeyPoint,
+  handleChangeKeyPoint,
+  handleMinusKeyPoint,
+  handlePlusTicket,
+  handleMinusTicket,
+  handleChangeTicket,
 }) {
   return (
     <Form className='mb-2'>
